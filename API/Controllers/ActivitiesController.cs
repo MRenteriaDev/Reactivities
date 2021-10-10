@@ -10,6 +10,7 @@ namespace API.Controllers
 {
     public class ActivitiesController : BaseApiController
     {
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetActivities()
         {

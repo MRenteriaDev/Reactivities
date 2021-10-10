@@ -1,5 +1,5 @@
 import { ErrorMessage, Formik } from "formik";
-import { Button, Form, Header, Label } from "semantic-ui-react";
+import { Button, Form, Header } from "semantic-ui-react";
 import MyTextInput from "../../app/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
