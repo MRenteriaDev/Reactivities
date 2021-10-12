@@ -16,6 +16,7 @@ import { useStore } from "../stores/store";
 import { useEffect } from "react";
 import { LoadingComponent } from "./LoadingComponent";
 import ModalContainer from "../common/modals/ModalContainer";
+import ProfilePage from "../../features/profiles/ProfilePage";
 
 function App() {
   const location = useLocation();
@@ -34,7 +35,7 @@ function App() {
   return (
     <>
       <ToastContainer position="bottom-right" theme="colored" />
-      <ModalContainer  />
+      <ModalContainer />
       <Route exact path="/" component={HomePage} />
       <Route
         path={"/(.+)"}
@@ -52,6 +53,7 @@ function App() {
                 />
                 <Route path="/errors" component={TestErrors} />
                 <Route path="/server-error" component={ServerError} />
+                <Route path="/profiles/:username" component={ProfilePage} />
                 <Route path="/login" component={LoginForm} />
                 <Route component={NotFound} />
               </Switch>
