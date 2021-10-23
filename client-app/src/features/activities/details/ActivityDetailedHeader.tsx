@@ -93,11 +93,12 @@ export default observer(function ActivityDetailedHeader({ activity }: Props) {
             </Button>
           </>
         ) : activity.isGoing ? (
-          <Button onClick={updateAttendance}>Cancel attendance</Button>
+          <Button onClick={updateAttendance} loading={loading} >Cancel attendance</Button>
         ) : (
           <Button
             disabled={activity.isCancell}
             onClick={updateAttendance}
+            loading={loading}
             color="teal"
           >
             Join Activity

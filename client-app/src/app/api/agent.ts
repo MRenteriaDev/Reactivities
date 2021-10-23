@@ -5,6 +5,7 @@ import { Activity, ActivityFormValues } from "../models/activity";
 import { store } from "../stores/store";
 import { User, UserFormValues } from "../models/user";
 import { Photo, Profiles } from "../models/profiles";
+import { UserActivity } from "../models/userActivity";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -97,8 +98,14 @@ const Profile = {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },
-  setMainPhoto: (id: string) => requests.post<Photo>(`/photos/${id}/setMain`, {}),
-  deletePhoto: (id: string) => requests.del<Photo>(`/photos/${id}`),
+  setMainPhoto: (id: string) => requests.post(`/photos/${id}/setMain`, {}),
+  deletePhoto: (id: string) => requests.del(`/photos/${id}`),
+  listActivities: (username: string, predicate: string) =>
+    requests.get<UserActivity[]>(
+      `/profiles/${username}/activities?predicate=${predicate}`
+    ),
+  updateProfile: (profile: Partial<Profiles>) =>
+    requests.put(`/profiles`, profile),
 };
 
 const agent = {
