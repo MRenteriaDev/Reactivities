@@ -106,6 +106,10 @@ const Profile = {
     ),
   updateProfile: (profile: Partial<Profiles>) =>
     requests.put(`/profiles`, profile),
+  updateFollowing: (username: string) =>
+    requests.post(`/follow/${username}`, {}),
+  listFollowings: (username: string, predicate: string) =>
+    requests.get<Profiles[]>(`/follow/${username}?predicate=${predicate}`),
 };
 
 const agent = {
