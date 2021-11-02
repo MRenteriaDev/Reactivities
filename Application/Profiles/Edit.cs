@@ -41,7 +41,7 @@ namespace Application.Profiles
                                 (x => x.UserName == _userAccessor.GetUsername());
 
                 user.Bio = request.Bio ?? user.Bio;
-                user.displayName = request.DisplayName ?? user.displayName;
+                user.DisplayName = request.DisplayName ?? user.DisplayName;
 
                 _context.Entry(user).State = EntityState.Modified;
 

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Application.Comments;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 
 namespace API.SignalR
@@ -19,7 +20,7 @@ namespace API.SignalR
         {
             var comment = await _mediator.Send(command);
 
-            await Clients.Group(command.ActvityId.ToString())
+            await Clients.Group(command.ActivityId.ToString())
                     .SendAsync("ReceiveComment", comment.Value);
         }
 

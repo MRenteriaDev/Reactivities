@@ -28,7 +28,7 @@ namespace Application.Comments
                 _mapper = mapper;
                 _context = context;
             }
-
+    
             public async Task<Result<List<CommentDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var comments = await _context.Comments
