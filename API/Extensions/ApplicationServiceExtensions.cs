@@ -45,11 +45,11 @@ namespace API.Extensions
                     var pgUserPass = connUrl.Split("@")[0];
                     var pgHostPortDb = connUrl.Split("@")[1];
                     var pgHostPort = pgHostPortDb.Split("/")[0];
-                    var pgDb = pgHostPortDb.Split("d6da4ohsutegmn")[1];
-                    var pgUser = pgUserPass.Split("sopyajrmdubztj")[0];
-                    var pgPass = pgUserPass.Split("d53df27f9c64738b61301213acbe079d8c995554dee97ad4993281afa45a522f")[1];
-                    var pgHost = pgHostPort.Split("ec2-34-239-34-246.compute-1.amazonaws.com")[0];
-                    var pgPort = pgHostPort.Split("5432")[1];
+                    var pgDb = pgHostPortDb.Split("/")[1];
+                    var pgUser = pgUserPass.Split(":")[0];
+                    var pgPass = pgUserPass.Split(":")[1];
+                    var pgHost = pgHostPort.Split(":")[0];
+                    var pgPort = pgHostPort.Split(":")[1];
 
                     connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}; SSL Mode=Require; Trust Server Certificate=true";
                 }
