@@ -38,18 +38,18 @@ namespace API.Extensions
                 else
                 {
                     // Use connection string provided at runtime by Heroku.
-                    //var connUrl = Environment.GetEnvironmentVariable("postgres://sopyajrmdubztj:d53df27f9c64738b61301213acbe079d8c995554dee97ad4993281afa45a522f@ec2-34-239-34-246.compute-1.amazonaws.com:5432/d6da4ohsutegmn");
+                    var connUrl = Environment.GetEnvironmentVariable("postgres://sopyajrmdubztj:d53df27f9c64738b61301213acbe079d8c995554dee97ad4993281afa45a522f@ec2-34-239-34-246.compute-1.amazonaws.com:5432/d6da4ohsutegmn");
 
                     // Parse connection URL to connection string for Npgsql
-                    //connUrl = connUrl.Replace("postgres://", string.Empty);
-                    //var pgUserPass = connUrl.Split("@")[0];
-                    //var pgHostPortDb = connUrl.Split("@")[1];
-                    //var pgHostPort = pgHostPortDb.Split("/")[0];
-                    var pgDb = Environment.GetEnvironmentVariable("d6da4ohsutegmn");
-                    var pgUser = Environment.GetEnvironmentVariable("sopyajrmdubztj");
-                    var pgPass = Environment.GetEnvironmentVariable("d53df27f9c64738b61301213acbe079d8c995554dee97ad4993281afa45a522f");
-                    var pgHost = Environment.GetEnvironmentVariable("ec2-34-239-34-246.compute-1.amazonaws.com");
-                    var pgPort = Environment.GetEnvironmentVariable("5432");
+                    connUrl = connUrl.Replace("postgres://", string.Empty);
+                    var pgUserPass = connUrl.Split("@")[0];
+                    var pgHostPortDb = connUrl.Split("@")[1];
+                    var pgHostPort = pgHostPortDb.Split("/")[0];
+                    var pgDb = pgHostPortDb.Split("/")[1];
+                    var pgUser = pgUserPass.Split(":")[0];
+                    var pgPass = pgUserPass.Split(":")[1];
+                    var pgHost = pgHostPort.Split(":")[0];
+                    var pgPort = pgHostPort.Split(":")[1];
 
                     connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}; SSL Mode=Require; Trust Server Certificate=true";
                 }
