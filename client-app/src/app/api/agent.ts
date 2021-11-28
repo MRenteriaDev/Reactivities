@@ -107,7 +107,7 @@ const Account = {
     requests.post<User>("/account/register", user),
   fbLogin: (accessToken: string) =>
     requests.post<User>(`/account/fbLogin?accessToken=${accessToken}`, {}),
-  refreshToken: () => requests.post<User>("/account/refreshToken", {}),
+  refreshToken: () => requests.post<User>("/account/refreshTokens", {}),
 };
 
 const Profile = {
