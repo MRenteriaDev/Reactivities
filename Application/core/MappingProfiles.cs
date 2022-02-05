@@ -42,6 +42,7 @@ namespace Application.core
                     .ForMember(d => d.Category, o => o.MapFrom(s => s.Activity.Category))
                     .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Activity.Attendees
                     .FirstOrDefault(x => x.IsHost).AppUser.UserName));
+                    
             CreateMap<Comment, CommentDto>()
                     .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.Author.DisplayName))
                     .ForMember(d => d.UserName, o => o.MapFrom(s => s.Author.UserName))
